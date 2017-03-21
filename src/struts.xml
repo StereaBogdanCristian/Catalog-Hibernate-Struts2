@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+   "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+   "http://struts.apache.org/dtds/struts-2.0.dtd">
+   
+
+<struts>
+	<package name="catalog" extends="struts-default">
+	
+		<action name="login" class="control.Login" method="login">
+                <result name="successElev" type="chain">homeElev</result>
+                <result name="successProfesor" type="chain">homeProfesor</result>
+                <result name="fail">index.jsp</result>
+                <result name="input">index.jsp</result>
+        </action>
+		
+		<action name="homeElev" class="control.Login" method="homeElev">
+				<result name="success">/WEB-INF/JSP/ElevNote.jsp</result>
+		</action>
+		
+		<action name="homeProfesor" class="control.Login" method="homeProfesor">
+				<result name="success">/WEB-INF/JSP/ProfesorCursuri.jsp</result>
+		</action>
+		
+		<action name="logout" class="control.Login" method="logout">
+			<result name="success">index.jsp</result>
+		</action>
+		
+		<action name="elevCursuri" class="control.ElevCursuri">
+			<result name="success">/WEB-INF/JSP/ElevCursuri.jsp</result>
+		</action>
+		
+		<action name="elevProfesori" class="control.ElevProfesori">
+			<result name="success">/WEB-INF/JSP/ElevProfesori.jsp</result>
+		</action>
+		
+		<action name="profesorElevi" class="control.ProfesorElevi">
+			<result name="success">/WEB-INF/JSP/ProfesorElevi.jsp</result>
+		</action>
+		
+		<action name="gestioneazaCursuri" class="control.GestioneazaCursuri" method="listaCursuri">
+			<result name="success">/WEB-INF/JSP/Cursuri.jsp</result>
+		</action>
+		
+		<action name="add" class="control.GestioneazaCursuri" method="add">
+			<result name="success" type="chain">gestioneazaCursuri</result>
+		</action>
+		
+		<action name="delete" class="control.GestioneazaCursuri" method="delete">
+			<result name="success" type="chain">gestioneazaCursuri</result>
+		</action>
+		
+		<action name="gestioneazaElevi" class="control.GestioneazaElevi" method="listaElevi">
+			<result name="success">/WEB-INF/JSP/Elevi.jsp</result>
+		</action>
+		
+		<action name="addElev" class="control.GestioneazaElevi" method="addElev">
+			<result name="success" type="chain">gestioneazaElevi</result>
+		</action>
+		
+		<action name="deleteElev" class="control.GestioneazaElevi" method="deleteElev">
+			<result name="success" type="chain">gestioneazaElevi</result>
+		</action>
+		
+		<action name="updateElev" class="control.GestioneazaElevi" method="updateElev">
+			<result name="success" type="chain">gestioneazaElevi</result>
+		</action>
+		
+		<action name="gestioneazaProfesori" class="control.GestioneazaProfesori" method="listaProfesori">
+			<result name="success">/WEB-INF/JSP/Profesori.jsp</result>
+		</action>
+		
+		<action name="addProfesor" class="control.GestioneazaProfesori" method="addProfesor">
+			<result name="success" type="chain">gestioneazaProfesori</result>
+		</action>
+		
+		<action name="deleteProfesor" class="control.GestioneazaProfesori" method="deleteProfesor">
+			<result name="success" type="chain">gestioneazaProfesori</result>
+		</action>
+		
+		<action name="acordaNota" class="control.AcordaNota" method="afiseazaCursuri">
+			<result name="success">/WEB-INF/JSP/AcordaNotaCursuri.jsp</result>
+		</action>
+		
+		<action name="afiseazaEleviCurs" class="control.AcordaNota" method="afiseazaEleviCurs">
+			<result name="success">/WEB-INF/JSP/AcordaNotaElevi.jsp</result>
+		</action>
+		
+		<action name="addNota" class="control.AcordaNota" method="addNota">
+			<result name="success" type="chain">afiseazaEleviCurs</result>
+		</action>
+		
+		<action name="eleviListaNoteModifica" class="control.AcordaNota" method="eleviListaNoteModifica">
+			<result name="success" type="chain">afiseazaEleviCurs</result>
+		</action>
+		
+	</package>
+	
+</struts>
